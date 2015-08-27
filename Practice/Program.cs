@@ -8,7 +8,7 @@ namespace Practice
     {
         private static void Main(string[] args)
         {
-          Console.WriteLine(IsStringUnique("abca"));
+            Console.WriteLine(Chapter1ArraysAndLists.IsPermutationOfPalindrome("tact coaa"));
         }
 
         private static bool IsStringUnique(string input)
