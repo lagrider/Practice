@@ -8,6 +8,40 @@ namespace Practice
 {
     public static class Chapter1ArraysAndLists
     {
+        public static string BaseTenToBase(int input, int baseNumber)
+        {
+            if (baseNumber < 2 || (baseNumber > 10 && baseNumber != 16))
+            {
+                return null;
+            }
+            StringBuilder sb = new StringBuilder();
+            while(input > 0)
+            {
+                int remainder = input % baseNumber;
+                string digit = DigitToStringInBase(remainder, baseNumber);
+                if(digit == null)
+                {
+                    return null;
+                }
+                sb.Insert(0,digit);
+                input = input / baseNumber;
+            }
+            return sb.ToString();
+        }
+        public static string DigitToStringInBase(int digit, int baseNumber)
+        {
+            if (baseNumber < 2 || (baseNumber > 10 && baseNumber != 16))
+            {
+                return null;
+            }
+            if (baseNumber != 16 || digit < 10)
+            {
+                return digit.ToString();
+            }
+            char baseChar = (char)('A' - 10);
+            return ((char)(baseChar + digit)).ToString();
+        }
+
         public static bool IsPermutationOfPalindrome(string s)
         {
             if (string.IsNullOrEmpty(s))
