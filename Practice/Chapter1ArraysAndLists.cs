@@ -8,6 +8,91 @@ namespace Practice
 {
     public static class Chapter1ArraysAndLists
     {
+        public static string OneEditAwayCheck(string input1, string input2)
+        {
+            if(input1 == null || input2 == null)
+            {
+                return null;
+            }
+            if(input1.Length == input2.Length)
+            {
+                // Possible replace 
+                int replaceCount = 0;
+                for(int i = 0; i < input1.Length; i++)
+                {
+                    if(input1[i] != input2[i])
+                    {
+                        replaceCount++;
+                        if(replaceCount > 1)
+                        {
+                            return "Replace: Not One Edit";
+                        }
+                    }
+                }
+                if(replaceCount == 1)
+                {
+                    return "Replace: One Edit";
+                }
+                else
+                {
+                    return "Replace: Zero Edit";
+                }
+            }
+            else if(input1.Length > input2.Length)
+            {
+                int input1Index = 0;
+                int input2Index = 0;
+                bool removeEnountered = false;
+                while(input2Index < input2.Length)
+                {
+                    if(input2[input2Index] != input1[input1Index])
+                    {
+                        if(removeEnountered)
+                        {
+                             return "Remove: Not One Edit";
+                        }
+                        else
+                        {
+                            removeEnountered = true;
+                        }
+                    }
+                    else
+                    {
+                        input2Index++;
+                    }
+                    input1Index++;
+                }
+                return "Remove: One Edit";
+                // Possible remove
+            }
+            else
+            {
+                // Possible insert
+                int input1Index = 0;
+                int input2Index = 0;
+                bool insertEncountered = false;
+                while(input1Index < input1.Length)
+                {
+                     if(input2[input2Index] != input1[input1Index])
+                     {
+                         if (insertEncountered)
+                         {
+                             return "Insert: Not One Edit";
+                         }
+                         else
+                         {
+                             insertEncountered = true;
+                         }
+                     }
+                     else
+                     {
+                         input1Index++;
+                     }
+                    input2Index++;
+                }
+                return "Insert: One Edit";
+            }
+        }
         public static string BaseTenToBase(int input, int baseNumber)
         {
             if (baseNumber < 2 || (baseNumber > 10 && baseNumber != 16))
@@ -51,17 +136,18 @@ namespace Practice
             var hashTable = new Dictionary<char, int>();
             foreach (char c in s)
             {
-                if (c == ' ')
+                char lowerC = char.ToLower(c);
+                if (lowerC == ' ')
                 {
                     continue;
                 }
-                if (hashTable.ContainsKey(c))
+                if (hashTable.ContainsKey(lowerC))
                 {
-                    hashTable[c]++;
+                    hashTable[lowerC]++;
                 }
                 else
                 {
-                    hashTable.Add(c, 1);
+                    hashTable.Add(lowerC, 1);
                 }
             }
             bool oddValueFound = false;

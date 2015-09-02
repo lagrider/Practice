@@ -8,7 +8,11 @@ namespace Practice
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(Chapter1ArraysAndLists.BaseTenToBase(171, 16));
+            Console.WriteLine(Chapter1ArraysAndLists.OneEditAwayCheck("pale", "pale"));
+            Console.WriteLine(Chapter1ArraysAndLists.OneEditAwayCheck("pale", "ple"));
+            Console.WriteLine(Chapter1ArraysAndLists.OneEditAwayCheck("pales", "ple"));
+            Console.WriteLine(Chapter1ArraysAndLists.OneEditAwayCheck("pale", "bale"));
+            Console.WriteLine(Chapter1ArraysAndLists.OneEditAwayCheck("pale", "bae"));
         }
 
         private static bool IsStringUnique(string input)
